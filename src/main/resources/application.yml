@@ -1,0 +1,27 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: login-test
+            client-secret: KqtZo9PazEFNf2s2u3RT9mkjCEyVLVtO
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8080/login/oauth2/code/keycloak
+            scope: openid, profile, email
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8081/realms/master
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/keycloak
+    username: keycloak
+    password: keycloak
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
